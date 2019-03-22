@@ -5,6 +5,14 @@
 [![StackOverflow (waterline)](https://img.shields.io/badge/stackoverflow-waterline-blue.svg)]( http://stackoverflow.com/questions/tagged/waterline)
 [![StackOverflow (sails)](https://img.shields.io/badge/stackoverflow-sails.js-blue.svg)]( http://stackoverflow.com/questions/tagged/sails.js)
 
+# This Fork
+
+This fork of Waterline changes the following behaviour:
+
+* an Error is thrown if an `undefined` value is passed to a `WHERE` clause.  This change is debated at https://github.com/balderdashy/sails/issues/4639, but currently unresolved
+
+# Introduction
+
 Waterline is a next-generation storage and retrieval engine, and the default ORM used in the [Sails framework](https://sailsjs.com).
 
 It provides a uniform API for accessing stuff from different kinds of [databases and protocols](https://sailsjs.com/documentation/concepts/extending-sails/adapters/available-adapters). That means you write the same code to get and store things like users, whether they live in MySQL, MongoDB, neDB, or Postgres.
