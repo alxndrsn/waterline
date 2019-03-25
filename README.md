@@ -7,9 +7,15 @@
 
 # This Fork
 
+## Why?
+
 This fork of Waterline changes the following behaviour:
 
 * an Error is thrown if an `undefined` value is passed to a `WHERE` clause.  This change is debated at https://github.com/balderdashy/sails/issues/4639, but currently unresolved
+
+## Version numbers
+
+Version numbers should match version numbers from upstream, with an additional `-{number}` suffix representing the iteration on the upstream version.
 
 # Introduction
 

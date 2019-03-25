@@ -182,6 +182,18 @@ describe('Collection Query ::', function() {
           return done();
         });
       });
+
+      it('should allow undefined values in WHERE clause', function(done) {
+        query.find()
+        .where({ id:undefined })
+        .exec(function(err, results) {
+          if (err) {
+            return done(err);
+          }
+
+          return done();
+        });
+      });
     });
   });
 });

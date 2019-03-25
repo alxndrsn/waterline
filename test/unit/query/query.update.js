@@ -100,6 +100,33 @@ describe('Collection Query ::', function() {
           return done();
         });
       });
+
+      it('should throw for undefined values in WHERE clause using callbacks', function(done) {
+        query.update({ id:undefined }, { name: 'foo' }, function(err) {
+          if (!err) {
+            return done(new Error('No error thrown for bad WHERE clause.'));
+          }
+
+          assert.ok(err.message.includes('Passing undefined in WHERE clause'), err.message);
+
+          return done();
+        });
+      });
+
+      it('should throw for undefined values in WHERE clause using deferreds', function(done) {
+        query.update()
+          .where({ id:undefined })
+          .set({ name: 'foo' })
+          .exec(function(err) {
+            if (!err) {
+              return done(new Error('No error thrown for bad WHERE clause.'));
+            }
+
+            assert.ok(err.message.includes('Passing undefined in WHERE clause'), err.message);
+
+            return done();
+          });
+      });
     });
 
     describe('casting values', function() {
