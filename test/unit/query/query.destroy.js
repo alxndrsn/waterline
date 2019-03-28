@@ -65,6 +65,44 @@ describe('Collection Query ::', function() {
           return done();
         });
       });
+
+      it('should throw for undefined primary key using callbacks', function(done) {
+        query.destroy(undefined, function(err) {
+          if (!err) {
+            return done(new Error('No error thrown for undefined primary key.'));
+          }
+
+          assert.ok(err.message.includes('Cannot use this method (`destroy`) with a criteria of `undefined`.'), err.message);
+
+          return done();
+        });
+      });
+
+      it('should throw for undefined values in WHERE clause using callbacks', function(done) {
+        query.destroy({ id:undefined }, function(err) {
+          if (!err) {
+            return done(new Error('No error thrown for bad WHERE clause.'));
+          }
+
+          assert.ok(err.message.includes('Passing undefined in WHERE clause'), err.message);
+
+          return done();
+        });
+      });
+
+      it('should throw for undefined values in WHERE clause using deferreds', function(done) {
+        query.destroy()
+          .where({ id:undefined })
+          .exec(function(err) {
+            if (!err) {
+              return done(new Error('No error thrown for bad WHERE clause.'));
+            }
+
+            assert.ok(err.message.includes('Passing undefined in WHERE clause'), err.message);
+
+            return done();
+          });
+      });
     });
 
     describe('with custom columnName set', function() {
